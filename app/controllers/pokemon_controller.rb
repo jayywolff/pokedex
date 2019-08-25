@@ -6,6 +6,6 @@ class PokemonController < ApplicationController
   end
 
   def show
-    @pokemon = PokeApi::Pokemon.fetch(params[:name])
+    @pokemon = PokeApi::Pokemon.fetch(params[:id])
   end
 end

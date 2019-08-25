@@ -8,17 +8,21 @@ class Pokemon
     :name,
     :type,
     :capture_rate,
+    :height,
+    :weight,
     :shape,
     :sprite,
     :link
   )
 
-  def initialize(id: nil, name: nil, type: nil, capture_rate: nil, shape: nil, sprite: nil)
+  def initialize(id:, name: nil, type: nil, capture_rate: nil, shape: nil, height: nil, weight: nil, sprite: nil)
     @id           = id
     @name         = name
     @type         = type
     @capture_rate = capture_rate
     @shape        = shape
+    @height       = height
+    @weight       = weight
     @sprite       = sprite || default_image
     @link         = path
   end

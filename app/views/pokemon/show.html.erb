@@ -1,2 +1,46 @@
-<h1>Pokemon#show</h1>
-<p>Find me in app/views/pokemon/show.html.erb</p>
+<% content_for :title, "##{@pokemon.id} - #{@pokemon.name}" %>
+<h1 class="my-4">Pokemon #<%= "#{@pokemon.id} #{@pokemon.name}" %></h1>
+<div id="pokemon-entry" class="row">
+  <div class="col-12">
+    <table class="table table-striped table-dark table-hover">
+      <tr>
+        <td>ID:</td>
+        <td><%= @pokemon.id %></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><%= @pokemon.name %></td>
+      </tr>
+      <tr>
+        <td>Types:</td>
+        <td>
+          <ul class="px-1">
+            <% @pokemon.type.each do |type| %>
+              <li><%= type %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Shape:</td>
+        <td><%= @pokemon.shape %></td>
+      </tr>
+      <tr>
+        <td>Weight:</td>
+        <td><%= @pokemon.weight %> lbs</td>
+      </tr>
+      <tr>
+        <td>Height:</td>
+        <td><%= @pokemon.height %> inches</td>
+      </tr>
+      <tr>
+        <td>Capture Rate:</td>
+        <td><%= @pokemon.capture_rate %>%</td>
+      </tr>
+      <tr>
+        <td>Sprite:</td>
+        <td><img src="<%= @pokemon.sprite %>" alt="<%= @pokemon.sprite %>-sprite"></td>
+      </tr>
+    </table>
+  </div>
+</div>
