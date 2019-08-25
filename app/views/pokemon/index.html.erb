@@ -1,11 +1,10 @@
-<h1>Kanto Pokedex</h1>
+<%= javascript_pack_tag 'pokedex' %>
+<%= content_tag :div, nil, id: 'data', data: { pokemon: @pokemon, types: @types } %>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Icon</th>
-  </tr>
-  <%# render partial: 'pokemon/row' %>
-</table>
+<h1 class="title"><%= @region.titleize %> Pokedex</h1>
+<div id="pokedex" class="row">
+  <div class="col-12">
+    <entries :pokemon="pokemon" :types="types"></entries>
+  </div>
+</div>
+
