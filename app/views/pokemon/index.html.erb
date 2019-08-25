@@ -4,7 +4,7 @@
 <h1 class="title"><%= @region.titleize %> Pokedex</h1>
 <div id="pokedex" class="row">
   <div class="col-12">
-    <entries :pokemon="pokemon" :types="types"></entries>
+    <entries :pokemon="pokemon" :types="types" v-cloak></entries>
   </div>
 </div>
 

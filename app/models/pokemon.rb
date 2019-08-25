@@ -1,4 +1,6 @@
 class Pokemon
+  include Rails.application.routes.url_helpers
+
   REGION = 'kanto'
 
   attr_accessor(
@@ -7,18 +9,18 @@ class Pokemon
     :type,
     :capture_rate,
     :shape,
-    :icon,
-    :sprite
+    :sprite,
+    :link
   )
 
-  def initialize(id:, name:, type: nil, capture_rate: nil, shape: nil, icon: nil, sprite: nil)
+  def initialize(id: nil, name: nil, type: nil, capture_rate: nil, shape: nil, sprite: nil)
     @id           = id
     @name         = name
     @type         = type
     @capture_rate = capture_rate
     @shape        = shape
-    @icon         = icon
     @sprite       = sprite || default_image
+    @link         = path
   end
 
   def attributes=(hash)
@@ -40,8 +42,8 @@ class Pokemon
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/#{id}.png"
   end
 
-  def link
+  def path
     return if id.nil?
-    "https://pokeapi.co/api/v2/pokemon/#{id}"
+    pokemon_path id
   end
 end

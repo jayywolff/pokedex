@@ -1,9 +1,11 @@
 import Vue from 'vue/dist/vue.esm'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import { DropdownPlugin, TablePlugin } from 'bootstrap-vue'
-Vue.use(DropdownPlugin)
+import { TablePlugin, FormGroupPlugin, FormInputPlugin, FormSelectPlugin } from 'bootstrap-vue'
 Vue.use(TablePlugin)
+Vue.use(FormGroupPlugin)
+Vue.use(FormInputPlugin)
+Vue.use(FormSelectPlugin)
 
 import Entries from '../components/entries.vue'
 
