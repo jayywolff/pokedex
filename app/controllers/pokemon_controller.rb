@@ -1,11 +1,13 @@
 class PokemonController < ApplicationController
   def index
     @region  = Pokemon::REGION
-    @pokemon = PokeApi::Pokedex.fetch(@region)
-    @types   = PokeApi::Type.fetch
+    @pokemon = Pokemon.includes(:types).all.map do |pokemon|
+      pokemon.serializable_hash(include: :types)
+    end
+    @types   = Type.order(:name).pluck(:id, :name).to_h
   end
 
   def show
-    @pokemon = PokeApi::Pokemon.fetch(params[:id])
+    @pokemon = Pokemon.find(params[:id])
   end
 end

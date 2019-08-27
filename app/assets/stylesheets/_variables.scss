@@ -101,10 +101,10 @@ $body-color:                $white !default;
 //
 // Style anchor elements.
 
-$link-color:                              $primary !default;
-$link-decoration:                         none !default;
-$link-hover-color:                        darken($link-color, 15%) !default;
-$link-hover-decoration:                   underline !default;
+$link-color:                  $primary !default;
+$link-decoration:             none !default;
+$link-hover-color:            darken($link-color, 15%) !default;
+$link-hover-decoration:       underline !default;
 
 $border-color:                $gray-300 !default;
 
@@ -135,11 +135,6 @@ $mark-bg:                     #fcf8e3 !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:          .5rem !default;
-$table-cell-padding-sm:       .25rem !default;
-
-$table-cell-vertical-align:   middle !default;
-
 $table-color:                 $body-color !default;
 $table-bg:                    null !default;
 $table-accent-bg:             rgba($black, .05) !default;
@@ -164,8 +159,6 @@ $table-striped-order:         odd !default;
 
 $table-caption-color:         $text-muted !default;
 
-$table-bg-level:              -9 !default;
-$table-border-level:          -6 !default;
 
 
 // Buttons
@@ -240,11 +233,6 @@ $form-file-button-color:          $form-file-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
 
 
-// Form validation
-
-$form-feedback-valid-color:         $success !default;
-$form-feedback-invalid-color:       $danger !default;
-
 // Navs
 
 $nav-link-disabled-color:           $gray-600 !default;
@@ -271,23 +259,3 @@ $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 $navbar-dark-brand-color:                 $navbar-dark-active-color !default;
 $navbar-dark-brand-hover-color:           $navbar-dark-active-color !default;
 
-
-// Dropdowns
-//
-// Dropdown menu container and contents.
-
-$dropdown-color:                    $body-color !default;
-$dropdown-bg:                       $white !default;
-$dropdown-border-color:             rgba($black, .15) !default;
-$dropdown-divider-bg:               $gray-200 !default;
-
-$dropdown-link-color:               $gray-900 !default;
-$dropdown-link-hover-color:         darken($gray-900, 5%) !default;
-$dropdown-link-hover-bg:            $gray-100 !default;
-
-$dropdown-link-active-color:        $component-active-color !default;
-$dropdown-link-active-bg:           $component-active-bg !default;
-
-$dropdown-link-disabled-color:      $gray-600 !default;
-
-$dropdown-header-color:             $gray-600 !default;

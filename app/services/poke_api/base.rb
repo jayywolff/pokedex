@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PokeApi
   class Base
     attr_reader :response

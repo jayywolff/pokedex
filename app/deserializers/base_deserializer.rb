@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseDeserializer
   include ActiveModel::Validations
   attr_reader :data

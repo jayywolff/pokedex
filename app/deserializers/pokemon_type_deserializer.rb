@@ -5,7 +5,7 @@ class PokemonTypeDeserializer < BaseDeserializer
   end
 
   def deserialize
-    list_of_types? ? deserialize_types_list : deserialize_type
+    list_of_types? ? deserialize_types_list : build_pokemon_type(data)
   end
 
   def required_keys
@@ -19,13 +19,13 @@ private
   end
 
   def deserialize_types_list
-    data[:results].map { |type| type[:name].titleize }.sort
+    data[:results].map { |hash| build_pokemon_type(hash) }
   end
 
-  def deserialize_type
-    OpenStruct.new(
-      id:   data[:id],
-      name: data[:name].titleize
-    )
+  def build_pokemon_type(hash)
+    id = hash[:url].split('/').last
+    Type.find_or_initialize_by(id: id) do |type|
+      type.name = hash[:name].titleize
+    end
   end
 end

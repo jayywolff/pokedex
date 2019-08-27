@@ -3,13 +3,13 @@
     <div class="row my-4 mx-n1">
       <div class="col-md-6 px-md-4">
         <b-form-group id="name-filter-label" label="Search By Name:" label-for="name-filter">
-          <b-form-input id="name-filter" v-model="nameFilter" type="search" placeholder="Search By Name:">
+          <b-form-input id="name-filter" v-model="nameFilter" type="search" placeholder="Type To Search:">
           </b-form-input>
         </b-form-group>
       </div>
       <div class="col-md-6 px-md-4">
         <b-form-group id="type-filter-label" label="Search By Type:" label-for="type-filter">
-          <b-form-select id="type-filter" v-model="typeFilter" :options="types" @change="filterByType">
+          <b-form-select id="type-filter" v-model.number="typeFilter" :options="types" @change="filterByType">
             <template slot="first"><option value="">All</option></template>
           </b-form-select>
         </b-form-group>
@@ -24,7 +24,14 @@
       :filter-included-fields="filterBy"
     >
       <template slot="[id]" slot-scope="data">
-        <a class="d-block" :href="data.item.link" tabindex="0">{{ data.value }}</a>
+        <a class="d-block" :href="'/pokemon/' + data.value" tabindex="0">{{ data.value }}</a>
+      </template>
+      <template slot="[types]" slot-scope="data">
+        <ul>
+          <li v-for="type in data.value">
+            {{ type.name }}
+          </li>
+        </ul>
       </template>
       <template slot="[sprite]" slot-scope="data">
         <img class="img-fluid" :src="data.value" :alt="data.item.name.toLowerCase() + '-sprite'"/>
@@ -40,9 +47,9 @@ export default {
     return {
       items: this.pokemon,
       fields: [
-        { key: 'id', sortable: true },
+        { key: 'id', sortable: true, class: 'pokemon-id' },
         { key: 'name', sortable: true },
-        { key: 'type', sortable: true },
+        { key: 'types', sortable: true },
         { key: 'sprite', sortable: false }
       ],
       nameFilter: '',
@@ -56,7 +63,10 @@ export default {
       if (this.typeFilter == '') {
         this.items = this.pokemon
       } else {
-        this.items = this.pokemon.filter(pokemon => pokemon.type == this.typeFilter)
+        this.items = this.pokemon.filter(pokemon => {
+          let types = pokemon.types.map(pokemon => pokemon.id)
+          return types.indexOf(this.typeFilter) > -1
+        })
       }
     }
   }

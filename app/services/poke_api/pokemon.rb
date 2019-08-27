@@ -1,34 +1,49 @@
+# frozen_string_literal: true
+
 module PokeApi
   class Pokemon < Base
     def self.fetch(id)
-      new(id).fetch
+      new.fetch(id)
     end
 
-    attr_reader :id
-
-    def initialize(id)
-      @id = id
+    def self.fetch_by_region(region)
+      new(region).fetch_by_region
     end
 
-    def fetch
-      cache_key = "#{self.class}/#{id}"
-      Rails.cache.fetch(cache_key, expires_in: Connection::CACHE_EXPIRATION) do
-        @response = connection.get("pokemon/#{id}")
-        if valid_response? && deserializer.valid?
-          deserializer.deserialize(pokemon_species)
-        else
-          PokemonFetchError.new(error_message)
-        end
+    attr_reader :region
+
+    def initialize(region = nil)
+      @region = region
+    end
+
+    def fetch(id)
+      @response = connection.get("pokemon/#{id}")
+      if valid_response? && deserializer.valid?
+        pokemon = deserializer.deserialize(pokemon_species(id))
+        pokemon.save
+      else
+        PokemonFetchError.new(error_message)
+      end
+    end
+
+    def fetch_by_region
+      pokemon_entries.map do |id|
+        fetch(id)
+        sleep(1) # slow down process due to pokeapi.co 100 requests/min limit
       end
     end
 
   private
     def deserializer
-      @deserializer ||= PokemonDeserializer.new(response.body)
+      PokemonDeserializer.new(response.body)
     end
 
-    def pokemon_species
+    def pokemon_species(id)
       PokemonSpecies.fetch(id)
+    end
+
+    def pokemon_entries
+      Pokedex.fetch(region).map(&:id)
     end
 
     class PokemonFetchError < StandardError; end

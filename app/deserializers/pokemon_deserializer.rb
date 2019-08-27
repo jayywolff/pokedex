@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PokemonDeserializer < BaseDeserializer
   def deserialize(pokemon_species = nil)
     if pokemon_species.present?
@@ -13,14 +15,13 @@ class PokemonDeserializer < BaseDeserializer
 
 private
   def build_pokemon
-    Pokemon.new(
-      id:       data[:id],
-      name:     data[:name].titleize,
-      height:   data[:height],
-      weight:   data[:weight],
-      sprite:   data[:sprites][:front_default],
-      type:     deserialize_types
-    )
+    Pokemon.find_or_initialize_by(id: data[:id]) do |pokemon|
+      pokemon.name   = data[:name].titleize
+      pokemon.height = data[:height]
+      pokemon.weight = data[:weight]
+      pokemon.sprite = data[:sprites][:front_default]
+      pokemon.types << deserialize_types
+    end
   end
 
   def build_pokemon_with_species_attributes(pokemon_species)
@@ -30,6 +31,13 @@ private
   end
 
   def deserialize_types
-    data[:types].map { |type| type[:type][:name].titleize }
+    data[:types].map do |type|
+      key = type[:type][:name].titleize
+      types[key]&.first
+    end
+  end
+
+  def types
+    @types ||= Type.all&.group_by(&:name)
   end
 end

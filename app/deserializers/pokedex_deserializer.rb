@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PokedexDeserializer < BaseDeserializer
   def deserialize
     data[:pokemon_entries].map { |entry| build_pokemon(entry) }

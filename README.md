@@ -1,15 +1,29 @@
-# Simple Pokedex 
+# Simple Pokedex App
 
-Backed by pokeapi.co
+Backed by [PokeApi](https://pokeapi.co/)
 
-# TODO
-• Utilizing the Pokedex API at https://pokeapi.co/ Create a table that displays the Kanto pokedex pokemon in order of ID by default
-• Allow Search queries to search for pokemon based on name, ie 'char' should result in charmander, charmeleon, and charizard.
-• Add show option for each pokemon which will present detailed information on pokemon such as Name, ID, Capture rate as a percentage, Types, and what shape the pokemon has(ex. quadruped for venosaur)
-• Add an ability to filter the table by type, ie fire or flying etc
-• The table should have an option to export to JSON, CSV, or XML
-• Table has icon for each pokemon, use front default. 'Show' page should show the sprite aswell.
-• Deploy a sample of the application to a free instance of AWS or Heroku
+https://jays-pokedex.herokuapp.com/
+
+## TODO
+- Add test coverage / refactor
+- Add cron job to sync pokemon/types daily with pokeapi
+- Add additional regions
+
+## Setup For Development
+- clone the project
+- `cd /path/to/git/dir`
+- `bundle install`
+- `yarn install`
+- `rails db:create`
+- `rails db:migrate`
+- `rails db:seed`
 
 ## Testing
-run `rspec` to run the full test suite.
+- run `rspec` to run the full test suite. Note: Test suite is a work in progress so far I only have some feature tests that cover the main functionality of the app
+
+## Tech Stack <3
+- Ruby on Rails 6.0
+- Postgres
+- RSpec 3
+- Vue.JS 2.6
+- Bootstrap 4
