@@ -1,7 +1,17 @@
 <%= javascript_pack_tag 'pokedex' %>
 <%= content_tag :div, nil, id: 'data', data: { pokemon: @pokemon, types: @types } %>
 
-<h1 class="title"><%= @region.titleize %> Pokedex</h1>
+<div class="row">
+  <div class="col-md-6">
+    <h1 class="title"><%= @region.titleize %> Pokedex</h1>
+  </div>
+  <div class="col-md-6 text-md-right mt-2">
+    <label class="mr-1">Download:</label>
+    <%= link_to "CSV", pokemon_index_path(format: 'csv'), class: 'btn btn-success', target: :_blank %>
+    <%= link_to "JSON", pokemon_index_path(format: 'json'), class: 'btn btn-primary', target: :_blank %>
+    <%= link_to "XML", pokemon_index_path(format: 'xml'), class: 'btn btn-warning', target: :_blank %>
+  </div>
+</div>
 <div id="pokedex" class="row">
   <div class="col-12">
     <entries :pokemon="pokemon" :types="types" v-cloak></entries>

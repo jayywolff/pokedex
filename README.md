@@ -10,13 +10,18 @@ https://jays-pokedex.herokuapp.com/
 - Add additional regions
 
 ## Setup For Development
-- clone the project
+- `git clone git@github.com:jayywolff/pokedex.git`
 - `cd /path/to/git/dir`
 - `bundle install`
 - `yarn install`
 - `rails db:create`
 - `rails db:migrate`
 - `rails db:seed`
+
+## Dependencies
+- ruby-2.6.3
+- bundle
+- postgres
 
 ## Testing
 - run `rspec` to run the full test suite. Note: Test suite is a work in progress so far I only have some feature tests that cover the main functionality of the app
