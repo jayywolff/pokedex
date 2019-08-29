@@ -1,3 +1,75 @@
-// Place all the styles related to the pokemon controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.pokedex-table {
+  td {
+    vertical-align: middle;
+  }
+}
+
+.badge.types {
+  color: $gray-100;
+  background-color: $gray-600;
+
+  &.type-normal {
+    background-color: #A8A878;
+  }
+  &.type-flying {
+    background-color: #AAAAFF;
+  }
+  &.type-water {
+    background-color: #337FCC;
+  }
+  &.type-bug {
+    background-color: #CDCD00;
+  }
+  &.type-electric {
+    color: $gray-800;
+    background-color: #FFE303;
+  }
+  &.type-fire {
+    background-color: #EE7600;
+  }
+  &.type-fighting {
+    background-color: #CC2900;
+  }
+  &.type-grass {
+    background-color: #57B24D;
+  }
+  &.type-flying {
+    background-color: #AAAAFF;
+  }
+  &.type-steel {
+    background-color: #B3B3B3;
+  }
+  &.type-dragon {
+    background-color: #7340BF;
+  }
+  &.type-ghost {
+    background-color: #8B668B;
+  }
+  &.type-ice {
+    background-color: #7DD3E8;
+  }
+  &.type-psychic {
+    background-color: #DB7093;
+  }
+  &.type-rock {
+    background-color: #B2944D;
+  }
+  &.type-dark {
+    background-color: #705848;
+  }
+  &.type-ground {
+    background-color: #E0B652;
+  }
+  &.type-poison {
+    background-color: #B866CC;
+  }
+  &.type-fairy {
+    background-color: #D962D9;
+  }
+  &.type-unknown {
+    background-color: #68A090;
+  }
+  &.type-shadow {
+    background-color: #3E3355;
+  }
+}

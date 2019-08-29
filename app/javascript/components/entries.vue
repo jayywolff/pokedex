@@ -17,6 +17,7 @@
     </div>
 
     <b-table striped hover bordered dark small
+      class="pokedex-table"
       :fields="fields"
       :items="items"
       :sort-by="sortBy"
@@ -27,9 +28,9 @@
         <a class="d-block" :href="'/pokemon/' + data.value" tabindex="0">{{ data.value }}</a>
       </template>
       <template slot="[types]" slot-scope="data">
-        <ul>
+        <ul class="list-unstyled pl-1 pl-md-2 mb-0">
           <li v-for="type in data.value">
-            {{ type.name }}
+            <span :class="'badge badge-pill py-1 mb-1 types type-' + type.name.toLowerCase()">{{ type.name }}</span>
           </li>
         </ul>
       </template>
