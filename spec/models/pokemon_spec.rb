@@ -11,12 +11,6 @@ RSpec.describe Pokemon, type: :model do
     it { is_expected.to validate_presence_of(:name) }
   end
 
-  describe '.to_csv' do
-    xit 'returns a csv file of all the pokemon' do
-      described_class.to_csv
-    end
-  end
-
   describe '#as_json' do
     let(:types) { [build(:type, id: 10, name: 'Fire')] }
     let(:pokemon) do

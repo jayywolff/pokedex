@@ -7,7 +7,7 @@ class PokemonController < ApplicationController
 
     respond_to do |format|
       format.html { render :index }
-      format.csv  { send_data Pokemon.to_csv }
+      format.csv  { send_data Reports::PokemonReport.generate }
       format.json { render json: @pokemon }
       format.xml  { render xml: @pokemon }
     end
