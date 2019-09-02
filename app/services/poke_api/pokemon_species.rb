@@ -17,7 +17,7 @@ module PokeApi
       if valid_response? && deserializer.valid?
         deserializer.deserialize
       else
-        PokemonSpeciesFetchError.new(error_message)
+        raise PokemonSpeciesFetchError.new(error_message)
       end
     end
 

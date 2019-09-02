@@ -16,11 +16,11 @@ module PokeApi
     def error_message
       message = "Status: #{response.status}\nErrors: "
       if response.present? && !response.success? && response.body.present?
-        message << response.body
-      elsif !deserializer.valid? && deserializer.errors.present?
-        message << deserializer.errors
+        message + response.body
+      elsif response.body.present? && !deserializer.valid? && deserializer.errors.present?
+        message + deserializer.errors
       else
-        message << 'Failed to receive valid request from PokeApi'
+        message + 'Failed to receive valid request from PokeApi'
       end
     end
   end

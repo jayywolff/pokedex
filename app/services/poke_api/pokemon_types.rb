@@ -18,7 +18,7 @@ module PokeApi
         types = deserializer.deserialize
         types.each(&:save)
       else
-        PokemonTypeFetchError.new(error_message)
+        raise PokemonTypeFetchError.new(error_message)
       end
     end
 

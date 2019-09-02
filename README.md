@@ -5,7 +5,7 @@ Backed by [PokeApi](https://pokeapi.co/)
 https://jays-pokedex.herokuapp.com/
 
 ## TODO
-- Add test coverage / refactor
+- Add more test coverage / refactor
 - Add cron job to sync pokemon/types daily with pokeapi
 - Add additional regions
 
@@ -24,7 +24,7 @@ https://jays-pokedex.herokuapp.com/
 - postgres
 
 ## Testing
-- run `rspec` to run the full test suite. Note: Test suite is a work in progress so far I only have some feature tests that cover the main functionality of the app
+- run `rspec` to run the full test suite. Note: Test suite is a work in progress...
 
 ## Tech Stack <3
 - Ruby on Rails 6.0

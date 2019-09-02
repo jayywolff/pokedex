@@ -22,7 +22,7 @@ module PokeApi
         pokemon = deserializer.deserialize(pokemon_species(id))
         pokemon.save
       else
-        PokemonFetchError.new(error_message)
+        raise PokemonFetchError.new(error_message)
       end
     end
 

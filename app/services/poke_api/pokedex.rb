@@ -17,15 +17,15 @@ module PokeApi
       if valid_response? && deserializer.valid?
         deserializer.deserialize
       else
-        PokedexFetchError.new(error_message)
+        raise PokedexFetchError.new(error_message)
       end
     end
 
   private
+
     def deserializer
       PokedexDeserializer.new(response.body)
     end
-
-    class PokedexFetchError < StandardError; end
   end
+  class PokedexFetchError < StandardError; end
 end
