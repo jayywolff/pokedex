@@ -24,17 +24,17 @@
       :filter="nameFilter"
       :filter-included-fields="filterBy"
     >
-      <template slot="[id]" slot-scope="data">
+      <template v-slot:cell(id)="data">
         <a class="d-block" :href="'/pokemon/' + data.value" tabindex="0">{{ data.value }}</a>
       </template>
-      <template slot="[types]" slot-scope="data">
+      <template v-slot:cell(types)="data">
         <ul class="list-unstyled pl-1 pl-md-2 mb-0">
           <li v-for="type in data.value">
             <span :class="'badge badge-pill py-1 mb-1 types type-' + type.name.toLowerCase()">{{ type.name }}</span>
           </li>
         </ul>
       </template>
-      <template slot="[sprite]" slot-scope="data">
+      <template v-slot:cell(sprite)="data">
         <img class="img-fluid" :src="data.value" :alt="data.item.name.toLowerCase() + '-sprite'"/>
       </template>
     </b-table>
