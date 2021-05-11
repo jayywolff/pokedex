@@ -1,0 +1,6 @@
+test:
+  adapter: postgresql
+  encoding: utf8
+  pool: 95
+  database: pokedex_test
+  host: localhost

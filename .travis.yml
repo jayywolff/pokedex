@@ -9,3 +9,18 @@ addons:
     packages:
       - postgresql-10
       - postgresql-client-10
+env:
+  matrix:
+    - TEST_SUITE=rspec
+  global:
+    - PGPORT=5433
+before_install:
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database pokedex_test;' -U postgres
+  - export TZ=America/New_York
+script:
+  - bundle exec rake db:test:prepare
+  - bundle exec $TEST_SUITE
