@@ -18,7 +18,7 @@ env:
   - PGUSER=travis
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - systemctl start postgresql.service
+  - sudo systemctl start postgresql.service
   - psql -c 'create database travis_ci_test;' -U postgres
   - export TZ=America/New_York
 script:
