@@ -2,5 +2,5 @@ test:
   adapter: postgresql
   encoding: utf8
   pool: 95
-  database: pokedex_test
+  database: travis_ci_test
   host: localhost
